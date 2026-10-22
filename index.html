@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkillNova AI | Discover Your Future</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #080b16;
+    --card: #111629;
+    --text: #f4f6ff;
+    --muted: #9ca7c4;
+    --purple: #9b7bff;
+    --cyan: #53e5d5;
+    --border: rgba(255,255,255,.09);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, input, select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: min(1150px, 90%);
+    margin: auto;
+}
+
+/* NAVBAR */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(8,11,22,.9);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+    min-height: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--purple);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.btn {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    background: linear-gradient(110deg, #8c65ff, #635bff);
+    transition: .25s;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px #7957ff35;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 600px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items: center;
+    gap: 50px;
+    padding: 80px 0;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #9b7bff50;
+    background: #9b7bff12;
+    color: #c4b3ff;
+    padding: 8px 13px;
+    border-radius: 30px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(42px, 5.5vw, 70px);
+    line-height: 1.08;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+}
+
+.gradient-text {
+    background: linear-gradient(100deg, #b6a1ff, #53e5d5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 530px;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.trust {
+    margin-top: 35px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.trust strong {
+    color: white;
+}
+
+/* DASHBOARD PREVIEW */
+
+.preview {
+    background: linear-gradient(145deg, #171d35, #0d1121);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 25px;
+    box-shadow: 0 30px 100px #6650ff13;
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.preview-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.preview-top small {
+    color: var(--muted);
+}
+
+.status {
+    color: var(--cyan);
+    background: #53e5d515;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.score-box {
+    text-align: center;
+    padding: 25px 10px;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    background: #ffffff04;
+}
+
+.score {
+    font-size: 53px;
+    font-weight: 800;
+    color: var(--cyan);
+    line-height: 1.3;
+}
+
+.score-box p {
+    margin: 5px auto;
+    font-size: 12px;
+}
+
+.progress-item {
+    margin-top: 20px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.progress-label span:last-child {
+    color: var(--muted);
+}
+
+.bar {
+    height: 7px;
+    background: #ffffff10;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--purple), var(--cyan));
+}
+
+/* STATS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    margin-bottom: 100px;
+    background: #ffffff03;
+}
+
+.stat {
+    padding: 25px;
+    text-align: center;
+}
+
+.stat + .stat {
+    border-left: 1px solid var(--border);
+}
+
+.stat h3 {
+    font-size: 28px;
+}
+
+.stat p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* SECTIONS */
+
+section.content-section {
+    padding: 35px 0 95px;
+    scroll-margin-top: 95px;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 45px;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: clamp(30px, 4vw, 43px);
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+    margin: 12px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.card {
+    padding: 27px;
+    border: 1px solid var(--border);
+    background: linear-gradient(140deg, #141a30, #0e1222);
+    border-radius: 18px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: #9b7bff70;
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: #9b7bff18;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* CAREER FINDER */
+
+.finder {
+    background: radial-gradient(circle at top right, #6850ff18, transparent 40%),
+                #101528;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin: 25px 0;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    color: white;
+    background: #0b1020;
+    border: 1px solid #ffffff20;
+    outline: none;
+}
+
+select:focus {
+    border-color: var(--purple);
+}
+
+.full {
+    width: 100%;
+}
+
+.result {
+    display: none;
+    margin-top: 25px;
+    padding: 25px;
+    border: 1px solid #53e5d550;
+    border-radius: 15px;
+    background: #53e5d508;
+}
+
+.result h3 {
+    color: var(--cyan);
+    margin-bottom: 10px;
+}
+
+.result p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.result ul {
+    padding-left: 20px;
+    font-size: 13px;
+    margin: 10px 0 18px;
+}
+
+/* ROADMAP */
+
+.roadmap {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
+}
+
+.step {
+    border-top: 2px solid var(--purple);
+    padding: 20px 5px;
+}
+
+.step span {
+    font-size: 12px;
+    color: var(--cyan);
+    font-weight: 800;
+}
+
+.step h3 {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.step p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* CTA + FOOTER */
+
+.cta {
+    padding: 55px 25px;
+    border: 1px solid var(--border);
+    background: linear-gradient(120deg,#8e6bff18,#53e5d510);
+    border-radius: 24px;
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+.cta p {
+    color: var(--muted);
+    margin: 15px 0 25px;
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 850px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding-top: 60px;
+    }
+
+    .preview {
+        max-width: 550px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .roadmap {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+}
+
+@media(max-width: 560px) {
+    .nav-inner {
+        min-height: 65px;
+    }
+
+    .nav-links a:not(.btn) {
+        display: none;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    h1 {
+        letter-spacing: -2px;
+    }
+
+    .grid, .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stat + .stat {
+        border-left: none;
+        border-top: 1px solid var(--border);
+    }
+
+    .finder {
+        padding: 23px;
+    }
+
+    .roadmap {
+        grid-template-columns: 1fr;
+    }
+
+    .cta {
+        padding: 35px 18px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="container nav-inner">
+        <a href="#home" class="logo">SkillNova<span>.</span></a>
+
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#careers">Career Finder</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#careers" class="btn">Get Started ↗</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+<section class="container hero" id="home">
+
+    <div>
+        <div class="badge">✦ YOUR FUTURE, REIMAGINED</div>
+
+        <h1>
+            Your skills.<br>
+            Your future.<br>
+            <span class="gradient-text">Your next move.</span>
+        </h1>
+
+        <p>
+            Stop guessing about your career. Discover career paths,
+            identify the skills you need, and build a roadmap that
+            takes you from where you are to where you want to be.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#careers" class="btn">Discover Your Career ↗</a>
+            <a href="#features" class="btn btn-outline">Explore Platform</a>
+        </div>
+
+        <div class="trust">
+            ✦ Built for students who want to <strong>grow beyond limits.</strong>
+        </div>
+    </div>
+
+    <div class="preview">
+        <div class="preview-top">
+            <div>
+                <strong>Your Growth Dashboard</strong><br>
+                <small>A preview of your potential</small>
+            </div>
+            <span class="status">● DEMO</span>
+        </div>
+
+        <div class="score-box">
+            <div class="score">85%</div>
+            <strong>Skill Readiness</strong>
+            <p>Your example progress dashboard</p>
+        </div>
+
+        <div class="progress-item">
+            <div class="progress-label">
+                <span>Technical Skills</span><span>85%</span>
+            </div>
+            <div class="bar"><div class="fill" style="width:85%"></div></div>
+        </div>
+
+        <div class="progress-item">
+            <div class="progress-label">
+                <span>Communication</span><span>70%</span>
+            </div>
+            <div class="bar"><div class="fill" style="width:70%"></div></div>
+        </div>
+
+        <div class="progress-item">
+            <div class="progress-label">
+                <span>Problem Solving</span><span>90%</span>
+            </div>
+            <div class="bar"><div class="fill" style="width:90%"></div></div>
+        </div>
+    </div>
+
+</section>
+
+<div class="container">
+    <div class="stats">
+        <div class="stat">
+            <h3>01</h3>
+            <p>Discover Your Strengths</p>
+        </div>
+        <div class="stat">
+            <h3>02</h3>
+            <p>Explore Career Paths</p>
+        </div>
+        <div class="stat">
+            <h3>03</h3>
+            <p>Build Your Roadmap</p>
+        </div>
+    </div>
+</div>
+
+<section class="container content-section" id="features">
+
+    <div class="section-heading">
+        <span class="eyebrow">Everything in one place</span>
+        <h2>Built for your next big move.</h2>
+        <p>
+            Tools to help you understand your strengths,
+            learn valuable skills and prepare for your future.
+        </p>
+    </div>
+
+    <div class="grid">
+
+        <article class="card">
+            <div class="icon">🧭</div>
+            <h3>Career Discovery</h3>
+            <p>Explore possible career paths based on your interests and skills.</p>
+        </article>
+
+        <article class="card">
+            <div class="icon">🧠</div>
+            <h3>Skill Assessment</h3>
+            <p>Understand which skills you already have and which you can improve.</p>
+        </article>
+
+        <article class="card">
+            <div class="icon">🗺️</div>
+            <h3>Personal Roadmap</h3>
+            <p>Break your career goals into manageable learning steps.</p>
+        </article>
+
+        <article class="card">
+            <div class="icon">💻</div>
+            <h3>Learning Resources</h3>
+            <p>Discover useful subjects, programming languages and practice ideas.</p>
+        </article>
+
+        <article class="card">
+            <div class="icon">🎤</div>
+            <h3>Interview Preparation</h3>
+            <p>Prepare for technical interviews and improve communication.</p>
+        </article>
+
+        <article class="card">
+            <div class="icon">📈</div>
+            <h3>Progress Tracking</h3>
+            <p>Track your learning milestones as you develop new skills.</p>
+        </article>
+
+    </div>
+</section>
+
+<section class="container content-section" id="careers">
+
+    <div class="section-heading">
+        <span class="eyebrow">Find your direction</span>
+        <h2>Which future fits you?</h2>
+        <p>
+            Choose your interests and current experience
+            to explore a suggested career path.
+        </p>
+    </div>
+
+    <div class="finder">
+
+        <form id="careerForm">
+
+            <div class="form-grid">
+
+                <div>
+                    <label for="interest">Your main interest</label>
+                    <select id="interest" required>
+                        <option value="">Select your interest</option>
+                        <option value="data">Data & Analytics</option>
+                        <option value="web">Web Development</option>
+                        <option value="ai">Artificial Intelligence</option>
+                        <option value="design">UI/UX & Design</option>
+                        <option value="business">Business & Management</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="level">Your current level</label>
+                    <select id="level" required>
+                        <option value="">Select your level</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn full">
+                Generate My Career Path ✦
+            </button>
+
+        </form>
+
+        <div class="result" id="result" aria-live="polite">
+            <h3 id="careerTitle"></h3>
+            <p id="careerDescription"></p>
+            <strong>Skills to explore:</strong>
+            <ul id="careerSkills"></ul>
+            <p id="careerLevel"></p>
+            <button type="button" class="btn btn-outline" onclick="resetFinder()">
+                Try Another Path
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section class="container content-section" id="roadmap">
+
+    <div class="section-heading">
+        <span class="eyebrow">Your journey starts here</span>
+        <h2>From curious to career-ready.</h2>
+        <p>A simple framework to start developing your professional skills.</p>
+    </div>
+
+    <div class="roadmap">
+
+        <div class="step">
+            <span>STEP 01</span>
+            <h3>Discover</h3>
+            <p>Identify your interests, strengths and career goals.</p>
+        </div>
+
+        <div class="step">
+            <span>STEP 02</span>
+            <h3>Learn</h3>
+            <p>Study the fundamentals and practise consistently.</p>
+        </div>
+
+        <div class="step">
+            <span>STEP 03</span>
+            <h3>Build</h3>
+            <p>Create projects to apply what you have learned.</p>
+        </div>
+
+        <div class="step">
+            <span>STEP 04</span>
+            <h3>Prepare</h3>
+            <p>Develop your resume and prepare for opportunities.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="container">
+    <div class="cta">
+        <span class="eyebrow">Your future begins now</span>
+        <h2>Make your next move count.</h2>
+        <p>Every expert starts as a beginner. Start exploring your possibilities today.</p>
+        <a href="#careers" class="btn">Find My Career Path ↗</a>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <span class="logo">SkillNova<span>.</span></span>
+        <span>Career discovery demo · Built for learners</span>
+        <span>© <span id="year"></span> SkillNova</span>
+    </div>
+</footer>
+
+<script>
+const careerData = {
+    data: {
+        title: "📊 Data Analyst",
+        description: "Explore how data can help people and businesses make better decisions.",
+        skills: ["Excel and spreadsheets", "SQL fundamentals", "Python basics", "Data visualisation"],
+        beginner: "Start with spreadsheets and basic statistics.",
+        intermediate: "Practise SQL, Python and dashboard projects.",
+        advanced: "Explore advanced analytics and end-to-end projects."
+    },
+
+    web: {
+        title: "💻 Web Developer",
+        description: "Learn to build interactive, accessible and responsive websites.",
+        skills: ["HTML and CSS", "JavaScript", "Git and GitHub", "Frontend or backend fundamentals"],
+        beginner: "Build simple websites using HTML and CSS.",
+        intermediate: "Develop interactive projects using JavaScript.",
+        advanced: "Explore application architecture, testing and deployment."
+    },
+
+    ai: {
+        title: "🤖 AI / Machine Learning",
+        description: "Explore systems that learn patterns from data to make predictions.",
+        skills: ["Python", "Mathematics and statistics", "Data preparation", "Machine learning fundamentals"],
+        beginner: "Build your Python and mathematics foundations.",
+        intermediate: "Study data handling and introductory machine learning.",
+        advanced: "Explore model evaluation and responsible AI projects."
+    },
+
+    design: {
+        title: "🎨 UI/UX Designer",
+        description: "Learn how to design digital experiences that are useful and easy to navigate.",
+        skills: ["User research", "Wireframing", "Prototyping", "Accessibility principles"],
+        beginner: "Study design basics and create simple wireframes.",
+        intermediate: "Build prototypes and test them with users.",
+        advanced: "Explore design systems and complex user experiences."
+    },
+
+    business: {
+        title: "💼 Business Analyst",
+        description: "Connect business needs with data, processes and practical solutions.",
+        skills: ["Communication", "Excel", "Requirements analysis", "Data interpretation"],
+        beginner: "Learn spreadsheets and business fundamentals.",
+        intermediate: "Practise process mapping and data analysis.",
+        advanced: "Explore stakeholder management and complex projects."
+    }
+};
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+document.getElementById("careerForm").addEventListener("submit", function(
